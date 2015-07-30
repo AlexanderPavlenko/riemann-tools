@@ -53,7 +53,7 @@ module Riemann
     end
 
     def report(event)
-      if options[:tag]
+      if Array(options[:tag]).size > 0
         # Work around a bug with beefcake which can't take frozen strings.
         event[:tags] = options[:tag].map(&:dup)
       end
